@@ -7,11 +7,11 @@ const userSchema = new Schema({
   password: String,
 });
 
-model("user", userSchema);
-
 userSchema.methods.encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
-  bcrypt.hash(password, salt);
+  return bcrypt.hash(password, salt);
 };
+
+model("user", userSchema);
 
 module.exports = model("user", userSchema);
