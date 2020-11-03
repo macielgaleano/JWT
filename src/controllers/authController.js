@@ -10,6 +10,7 @@ router.post("/signup", (req, res, next) => {
     email: email,
     password: password,
   });
+  user.password = User.encryptPassword(user.password);
   res.json(user);
 });
 router.post("/signin", (req, res, next) => {
