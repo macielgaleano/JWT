@@ -1,8 +1,7 @@
-const app = require("./app");
+const express = require("express");
+const app = express();
 
-async function init() {
-  await app.listen(3001);
-  console.log(`Example app listening on port 3001! http://localhost:3001`);
-}
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-init();
+module.exports = app;
